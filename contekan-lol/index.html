@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokemon Jankenpon</title>
+    <style>
+      * {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      }
+      .my-1 {
+        margin-top: 1em;
+        margin-bottom: 1em;
+      }
+      .letsgo {
+        animation: shake 0.5s;
+        animation-iteration-count: infinite;
+      }
+
+      @keyframes shake {
+        0% {
+          transform: translate(1px, 1px) rotate(0deg);
+        }
+        10% {
+          transform: translate(-1px, -2px) rotate(-1deg);
+        }
+        20% {
+          transform: translate(-3px, 0px) rotate(1deg);
+        }
+        30% {
+          transform: translate(3px, 2px) rotate(0deg);
+        }
+        40% {
+          transform: translate(1px, -1px) rotate(1deg);
+        }
+        50% {
+          transform: translate(-1px, 2px) rotate(-1deg);
+        }
+        60% {
+          transform: translate(-3px, 1px) rotate(0deg);
+        }
+        70% {
+          transform: translate(3px, 1px) rotate(-1deg);
+        }
+        80% {
+          transform: translate(-1px, -1px) rotate(1deg);
+        }
+        90% {
+          transform: translate(1px, 2px) rotate(0deg);
+        }
+        100% {
+          transform: translate(1px, -2px) rotate(-1deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="my-1">
+      <h1>User Selection : <span id="user-selection"></span></h1>
+    </div>
+    <div class="my-1">
+      <button onclick="handleClick('Bulbasaur')">Bulbasaur</button>
+      <button onclick="handleClick('Charmander')">Charmander</button>
+      <button onclick="handleClick('Squirtle')">Squirtle</button>
+    </div>
+    <div class="my-1">
+      <img
+        id="our-pokemon"
+        src="./static/img/pokeball.png"
+        alt="Bulbasaur"
+        height="120"
+      />
+    </div>
+    <div class="my-1">
+      <h1>Enemy Selection : <span id="enemy-selection"></span></h1>
+    </div>
+    <div class="my-1">
+      <img
+        id="enemy-pokemon"
+        src="./static/img/pokeball.png"
+        alt="Bulbasaur"
+        height="120"
+      />
+    </div>
+    <div class="my-1">
+      <h1 id="result"></h1>
+    </div>
+    <script>
+      function handleClick(pokemon) {
+        document.getElementById("our-pokemon").className = "letsgo";
+        document.getElementById("enemy-pokemon").className = "letsgo";
+        setTimeout(() => {
+          document.getElementById("our-pokemon").classList.remove("letsgo");
+          document.getElementById("enemy-pokemon").classList.remove("letsgo");
+          document.getElementById("user-selection").innerHTML = pokemon;
+          if (pokemon === "Bulbasaur") {
+            document.getElementById("our-pokemon").src =
+              "./static/img/bulbasaur.webp";
+            // Charmander
+            document.getElementById("enemy-selection").innerHTML = "Charmander";
+            document.getElementById("enemy-pokemon").src =
+              "./static/img/charmander.png";
+            //
+          } else if (pokemon === "Charmander") {
+            document.getElementById("our-pokemon").src =
+              "./static/img/charmander.png";
+            // Squirtle
+            document.getElementById("enemy-selection").innerHTML = "Squirtle";
+            document.getElementById("enemy-pokemon").src =
+              "./static/img/squirtle.png";
+            //
+          } else if (pokemon === "Squirtle") {
+            document.getElementById("our-pokemon").src =
+              "./static/img/squirtle.png";
+            // Bulbasaur
+            document.getElementById("enemy-selection").innerHTML = "Bulbasaur";
+            document.getElementById("enemy-pokemon").src =
+              "./static/img/bulbasaur.webp";
+            //
+          }
+          document.getElementById("result").innerHTML = "You Lose";
+        }, 500);
+      }
+    </script>
+  </body>
+</html>
